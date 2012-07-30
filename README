@@ -1,0 +1,14 @@
+
+package main
+
+import (
+        "fmt"
+        "zerorpc"
+        )
+
+
+func main() {
+    c := zerorpc.NewClient("tcp://localhost:4242")
+    res := c.Invoke("uname").([]interface{})[3].([]byte)
+    fmt.Printf("os.uname()[3] = \"%s\"\n", res)
+}
